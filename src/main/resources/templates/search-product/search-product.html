@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kết quả tìm kiếm</title>
+</head>
+<body>
+<h1>Kết quả tìm kiếm cho "{{ query }}"</h1>
+<ul>
+    <li th:each="product : ${products}">
+        <h3 th:text="${product.name}">Tên sản phẩm</h3>
+        <p th:text="${product.description}">Mô tả sản phẩm</p>
+        <p>Giá: <span th:text="${product.price}"></span> VND</p>
+    </li>
+</ul>
+</body>
+</html>

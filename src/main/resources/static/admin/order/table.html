@@ -1,0 +1,46 @@
+<div class="row mx-0 bg-white" ng-if="items">
+	<div class="col-12 py-3">
+		<table id="datatable-buttons" class="table table-collapse table-bordered  dt-responsive">
+			<thead class="bg-success">
+				<tr>
+					<th>Id</th>
+					<th>Address</th>
+					<th>User Name</th>
+					<th>Create Date</th>
+					<th>Quantity</th>
+					<th>Price</th>
+					<th>Total</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-repeat="item in items">
+					<td class="align-center">{{item.order.id}}</td>
+					<td class="align-center">{{item.order.address}}</td>
+					<td class="align-center">{{item.order.account.username}}</td>
+					<td class="align-center">{{item.order.createDate | date:'dd/MM/yyyy'}}</td>
+					<td class="align-center">{{item.quantity}}</td>
+					<td class="align-center">{{item.price}}</td>
+					<td class="align-center">{{(item.price*item.quantity)}} VNĐ</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</div>
+
+<script>
+	// Lấy danh sách tổng giá trị
+	const orderItems = document.querySelectorAll('#order-list .item-total.align-center');
+	let total = 0;
+
+	orderItems.forEach(item => {
+		const valueText = item.textContent.trim();
+		const value = parseFloat(valueText.replace('VNĐ', '').replace(',', ''));
+		if (!isNaN(value)) {
+			total += value;
+		}
+	});
+
+	// Lưu tổng giá trị vào Local Storage
+	localStorage.setItem('orderTotal', total); // Lưu ngay khi tính xong
+</script>
+<script src="/assetss/js/init.js"></script>

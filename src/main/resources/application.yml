@@ -1,0 +1,42 @@
+server:
+  port: 8080
+spring:
+  datasource:
+    driverClassName: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/demo2?useSSL=false&serverTimezone=UTC
+    username: root
+  jpa:
+    hibernate:
+      ddl-auto: update
+      dialect: org.hibernate.dialect.MySQLDialect
+    open-in-view: true
+    show-sql: false
+  mail:
+    host: smtp.gmail.com
+    password: drydqssinbkzpjsr
+    port: 587
+    properties:
+      mail:
+        smpt:
+          auth: true
+        smtp:
+          starttls:
+            enable: true
+    username: 20211760@eaut.edu.vn
+  profiles:
+    active: dev
+  security:
+    oauth2:
+      client:
+        registration:
+          facebook:
+            client-id: 1050501362620628
+            client-secret: 225bb03830263921ae15aa7a1647a0d6
+          google:
+            client-id: 14152977969-lqid1rgojd63njtsd6sg6sv4iftjo8u5.apps.googleusercontent.com
+            client-secret: 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
+  servlet:
+    multipart:
+      enabled: true
+      max-file-size: 20MB
+      max-request-size: 50MB
